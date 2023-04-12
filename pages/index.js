@@ -2,24 +2,21 @@ import CardBox from '@/components/CardBox';
 import CardTitle from '@/components/CardTitle';
 import Button from '@/components/Button';
 import CentralizedContainer from '@/components/CentralizedContainer';
-import { auth } from '@/auth/firebase';
-import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
-} from 'firebase/auth';
+import { signIn, signUp } from '@/auth/firebase';
 
-const signIn = e => {
-  e.preventDefault();
-  signInWithEmailAndPassword(auth, '123@456.com', '123456')
-    .then(userCredentials => console.log(userCredentials))
-    .catch(err => console.log(err));
+const userEmail = 'user@someemail.com';
+const userPassword = 'userpasswd';
+
+const handleSignUp = async e => {
+  const { user, errorMsg } = await signUp(userEmail, userPassword);
+  if (user) console.log(user.email);
+  else if (errorMsg) console.log(errorMsg);
 };
 
-const signUp = e => {
-  e.preventDefault();
-  createUserWithEmailAndPassword(auth, '123@456.com', '123456')
-    .then(userCredentials => console.log(userCredentials))
-    .catch(err => console.log(err));
+const handleSignIn = async e => {
+  const { user, errorMsg } = await signIn(userEmail, userPassword);
+  if (user) console.log(user.email);
+  else if (errorMsg) console.log(errorMsg);
 };
 
 export default function Home() {
@@ -27,8 +24,8 @@ export default function Home() {
     <CentralizedContainer>
       <CardBox>
         <CardTitle title="Login" />
-        <Button label="Login" clickHandler={signIn} />
-        <Button label="Sign up" clickHandler={signUp} />
+        <Button label="Login" clickHandler={handleSignIn} />
+        <Button label="Sign up" clickHandler={handleSignUp} />
       </CardBox>
     </CentralizedContainer>
   );
