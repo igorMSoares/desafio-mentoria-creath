@@ -2,30 +2,40 @@ import CardBox from '@/components/CardBox';
 import CardTitle from '@/components/CardTitle';
 import Button from '@/components/Button';
 import CentralizedContainer from '@/components/CentralizedContainer';
-import { signIn, signUp } from '@/auth/firebase';
+import { auth, onAuthStateChanged } from '@/auth/firebase';
+import { handleSignIn, handleSignUp, handleSignOut } from '@/utils/auth';
+import { useEffect, useState } from 'react';
 
 const userEmail = 'user@someemail.com';
 const userPassword = 'userpasswd';
 
-const handleSignUp = async e => {
-  const { user, errorMsg } = await signUp(userEmail, userPassword);
-  if (user) console.log(user.email);
-  else if (errorMsg) console.log(errorMsg);
-};
-
-const handleSignIn = async e => {
-  const { user, errorMsg } = await signIn(userEmail, userPassword);
-  if (user) console.log(user.email);
-  else if (errorMsg) console.log(errorMsg);
-};
-
 export default function Home() {
+  const [currentUser, setCurrentUser] = useState(auth.currentUser);
+
+  useEffect(() => {
+    const removeListener = onAuthStateChanged(auth, user => {
+      setCurrentUser(user);
+
+      return () => {
+        removeListener();
+      };
+    });
+  }, []);
+
   return (
     <CentralizedContainer>
       <CardBox>
         <CardTitle title="Login" />
-        <Button label="Login" clickHandler={handleSignIn} />
-        <Button label="Sign up" clickHandler={handleSignUp} />
+        <p>{currentUser?.email ?? 'Not logged'}</p>
+        <Button
+          label="Login"
+          clickHandler={e => handleSignIn({ userEmail, userPassword })}
+        />
+        <Button
+          label="Sign up"
+          clickHandler={e => handleSignUp({ userEmail, userPassword })}
+        />
+        <Button label="Sign Out" clickHandler={e => handleSignOut()} />
       </CardBox>
     </CentralizedContainer>
   );
