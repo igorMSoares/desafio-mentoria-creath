@@ -5,11 +5,12 @@ import CentralizedContainer from '@/components/CentralizedContainer';
 import { auth, onAuthStateChanged } from '@/auth/firebase';
 import { handleSignIn, handleSignUp, handleSignOut } from '@/utils/auth';
 import { useEffect, useState } from 'react';
+import Form from '@/components/Form';
 
 const userEmail = 'user@someemail.com';
 const userPassword = 'userpasswd';
 
-export default function Login() {
+export default function Register() {
   const [currentUser, setCurrentUser] = useState(auth.currentUser);
 
   useEffect(() => {
@@ -27,11 +28,12 @@ export default function Login() {
       <CardBox>
         <CardTitle title="Login" />
         <p>{currentUser?.email ?? 'Not logged'}</p>
+        <Form label="Fullname"/>
         <Button
-          label="Login"
-          clickHandler={e => handleSignIn({ userEmail, userPassword })}
+          label="Sign up"
+          clickHandler={e => handleSignUp({ userEmail, userPassword })}
         />
-        
+        <Button label="Sign Out" clickHandler={e => handleSignOut()} />
       </CardBox>
     </CentralizedContainer>
   );
