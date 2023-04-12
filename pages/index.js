@@ -8,10 +8,14 @@ import { useEffect, useState } from 'react';
 import Login from './Login/Login';
 import Register from './Register/Register';
 import  Splash from './Splash/Splash';
+import { Router } from '@/Routes/Router';
+import { BrowserRouter } from 'react-router-dom';
 
 export default function Home() {
   
   return (
-    <Register/>
+    <BrowserRouter>
+      <Router/>
+    </BrowserRouter>
   );
 }

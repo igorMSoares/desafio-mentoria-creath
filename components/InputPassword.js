@@ -82,7 +82,6 @@ export default function InputPassword(){
                 <Styledtoggle>
                     <Icon/>
                 </Styledtoggle>
-               
             </StyledContainer>
         </StyledForm>
     );

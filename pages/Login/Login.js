@@ -5,6 +5,9 @@ import CentralizedContainer from '@/components/CentralizedContainer';
 import { auth, onAuthStateChanged } from '@/auth/firebase';
 import { handleSignIn, handleSignUp, handleSignOut } from '@/utils/auth';
 import { useEffect, useState } from 'react';
+import InputPassword from '@/components/InputPassword';
+import Form from '@/components/Form';
+import Text from '@/components/Text';
 
 const userEmail = 'user@someemail.com';
 const userPassword = 'userpasswd';
@@ -27,11 +30,14 @@ export default function Login() {
       <CardBox>
         <CardTitle title="Login" />
         <p>{currentUser?.email ?? 'Not logged'}</p>
+        <Form label="Email adress"/>
+        <InputPassword/>
         <Button
           label="Login"
           clickHandler={e => handleSignIn({ userEmail, userPassword })}
         />
         <Button label="Sign Out" clickHandler={e => handleSignOut()} />
+        <Text text="Don’t have an account ? Register"></Text>
       </CardBox>
     </CentralizedContainer>
   );
