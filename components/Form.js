@@ -1,19 +1,28 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 
+
+
+
+
 const StyledForm = styled.div`
-   
+   flex-direction: column;
+   display: flex;
 `;
 
+
 const StyledInput = styled.input`
+    outline:none;    
     width: 255px;
-    height: 32px;
+    height: 30px;
     background: #E6E6E6;
     border-radius: 10px;
+    border-style: none;
+    padding-left:10px;
+    font-style: normal;
 `;
 
 const StyledLabel = styled.label`
-    width: 51px;
-    height: 15px;
     font-style: normal;
     font-weight: 500;
     font-size: 12px;
@@ -22,13 +31,14 @@ const StyledLabel = styled.label`
 `;
 
 const LabelInput = ({text}) => <StyledLabel>{text}</StyledLabel>
-const InputForm = () => <StyledInput></StyledInput>
+const InputForm = ({type}) => <StyledInput type={type}></StyledInput>
+const ButtonView = ()=> <StyledButtonView onClick={togglePassword}></StyledButtonView>
 
- const Form = ({label}) => {
+ const Form = ({label, typeB}) => {
     return(
         <StyledForm>
             <LabelInput text={label}/>
-            <InputForm/>
+            <InputForm type={typeB}/>
         </StyledForm>
     );
 }

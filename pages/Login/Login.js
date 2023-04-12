@@ -31,7 +31,7 @@ export default function Login() {
           label="Login"
           clickHandler={e => handleSignIn({ userEmail, userPassword })}
         />
-        
+        <Button label="Sign Out" clickHandler={e => handleSignOut()} />
       </CardBox>
     </CentralizedContainer>
   );

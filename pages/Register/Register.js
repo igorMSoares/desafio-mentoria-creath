@@ -6,6 +6,8 @@ import { auth, onAuthStateChanged } from '@/auth/firebase';
 import { handleSignIn, handleSignUp, handleSignOut } from '@/utils/auth';
 import { useEffect, useState } from 'react';
 import Form from '@/components/Form';
+import Text from '@/components/Text';
+import InputPassword from '@/components/InputPassword';
 
 const userEmail = 'user@someemail.com';
 const userPassword = 'userpasswd';
@@ -26,14 +28,16 @@ export default function Register() {
   return (
     <CentralizedContainer>
       <CardBox>
-        <CardTitle title="Login" />
-        <p>{currentUser?.email ?? 'Not logged'}</p>
-        <Form label="Fullname"/>
+        <CardTitle title="Create Account" />
+
+        <Form label="Fullname" required/>
+        <Form label="Email adress" required/>
+        <InputPassword/>
         <Button
-          label="Sign up"
+          label="Create Account"
           clickHandler={e => handleSignUp({ userEmail, userPassword })}
         />
-        <Button label="Sign Out" clickHandler={e => handleSignOut()} />
+        <Text text="Already have an account? Log in"></Text>
       </CardBox>
     </CentralizedContainer>
   );

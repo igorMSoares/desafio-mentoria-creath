@@ -7,6 +7,8 @@ const StyledButton = styled.button`
   background-color: #3867e2;
   border-radius: 0.625rem;
   border: 0;
+  height: 35px;
+  font-size: 16px;
 `;
 
 const Button = ({ type, label, clickHandler }) => {
