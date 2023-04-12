@@ -9,8 +9,12 @@ const StyledButton = styled.button`
   border: 0;
 `;
 
-const Button = ({ type, label }) => {
-  return <StyledButton type={type}>{label}</StyledButton>;
+const Button = ({ type, label, clickHandler }) => {
+  return (
+    <StyledButton type={type} onClick={clickHandler}>
+      {label}
+    </StyledButton>
+  );
 };
 
 Button.defaultProps = {
