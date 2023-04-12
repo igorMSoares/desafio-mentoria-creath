@@ -25,7 +25,7 @@ const StyledForm = styled.div`
    flex-direction: column;
    display: flex;
 `;
-const Styledtoggle = styled.button`
+const Styledtoggle = styled.span`
     width: 25px;
     background: #E6E6E6;
     border-style:none;
@@ -67,9 +67,7 @@ export default function InputPassword(){
     ;
 
     const LabelInput = ({text}) => <StyledLabel>{text}</StyledLabel>;
-    const InputPassword = ()=> <StyledInput 
-    type={passwordShow? "text" : "password"}>
-    </StyledInput>;
+    const InputPassword = StyledInput;
 
     
 
@@ -78,7 +76,7 @@ export default function InputPassword(){
         <StyledForm>
             <LabelInput text="Password"/>
             <StyledContainer>
-                <InputPassword/>
+                <InputPassword type={passwordShow? "text" : "password"}/>
                 <Styledtoggle>
                     <Icon/>
                 </Styledtoggle>
