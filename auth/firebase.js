@@ -4,6 +4,8 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged,
 } from 'firebase/auth';
 
 // Your web app's Firebase configuration
@@ -68,4 +70,10 @@ const signIn = async (email, password) => {
   }
 };
 
-export { signUp, signIn };
+const userSignOut = () => {
+  signOut(auth)
+    .then(console.log('User signed out.'))
+    .catch(error => console.log(error));
+};
+
+export { signUp, signIn, userSignOut, auth, onAuthStateChanged };
