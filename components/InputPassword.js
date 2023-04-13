@@ -33,9 +33,9 @@ export default function InputPassword() {
   };
 
   return (
-    <>
+    <div id="user-passwd_input--wrapper">
       <LabelInput text="Password" labelFor={'user-passwd_input'} />
-      <StyledContainer>
+      <StyledContainer id="user-passwd_input--container">
         <FormInput
           id="user-passwd_input"
           type={passwordShow ? 'text' : 'password'}
@@ -45,6 +45,6 @@ export default function InputPassword() {
           <Icon />
         </Styledtoggle>
       </StyledContainer>
-    </>
+    </div>
   );
 }

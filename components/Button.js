@@ -9,6 +9,7 @@ const StyledButton = styled.button`
   border: 0;
   height: 35px;
   font-size: 16px;
+  cursor: pointer;
 `;
 
 const Button = ({ type, label, clickHandler, form }) => {

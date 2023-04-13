@@ -8,8 +8,27 @@ import { useEffect, useState } from 'react';
 import Form from '@/components/Form';
 import Text from '@/components/Text';
 
-const userEmail = 'user@someemail.com';
-const userPassword = 'userpasswd';
+const getUserInputValues = form => {
+  const email = form.children['user-email_input'].value;
+
+  const getUserPasswdInput = () => {
+    return form.children['user-passwd_input--wrapper'].children[
+      'user-passwd_input--container'
+    ].children['user-passwd_input'];
+  };
+
+  const passwd = getUserPasswdInput().value;
+
+  return { email, passwd };
+};
+
+const handleFormSubmit = form => {
+  const { email: userEmail, passwd: userPassword } = getUserInputValues(form);
+
+  //TODO: Validate email and passwd
+
+  handleSignUp({ userEmail, userPassword });
+};
 
 export default function Register() {
   const [currentUser, setCurrentUser] = useState(auth.currentUser);
@@ -28,11 +47,14 @@ export default function Register() {
     <CentralizedContainer>
       <CardBox>
         <CardTitle title="Create Account" />
-        <Form />
+        <Form
+          id="register-user_form"
+          submitHandler={e => handleFormSubmit(e.target)}
+        />
         <Button
           type="submit"
+          form="register-user_form"
           label="Create Account"
-          clickHandler={e => handleSignUp({ userEmail, userPassword })}
         />
         <Text text="Already have an account?" link="/Login"></Text>
       </CardBox>
