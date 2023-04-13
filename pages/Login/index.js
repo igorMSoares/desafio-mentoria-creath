@@ -42,7 +42,7 @@ export default function Login() {
     if (user) {
       setErrorMsg('');
       setInputError(false);
-      router.push({ pathname: '/', query: { user: user.email ?? '' } });
+      router.push({ pathname: '/' });
     } else if (errorMsg) {
       handleErrorMsg({ errorMsg, form, errorCode });
     }
@@ -87,7 +87,6 @@ export default function Login() {
           error={inputError}
         />
         <Button type="submit" form="login-user_form" label="Login" />
-        <Button label="Sign Out" clickHandler={e => handleSignOut()} />
         <Text text="Don’t have an account ? Register" link="/Register"></Text>
       </CardBox>
     </CentralizedContainer>

@@ -1,9 +1,8 @@
 import Splash from '@/components/Splash';
-import { useRouter } from 'next/router';
+import { auth } from '@/auth/firebase';
 
 export default function Home() {
-  const router = useRouter();
-  const user = router.query?.user;
+  const user = auth.currentUser?.email;
 
   return <Splash user={user ? user : ''} />;
 }
