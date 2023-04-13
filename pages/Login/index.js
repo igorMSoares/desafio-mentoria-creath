@@ -87,7 +87,6 @@ export default function Login() {
           error={inputError}
         />
         <Button type="submit" form="login-user_form" label="Login" />
-        <Button label="Sign Out" clickHandler={e => handleSignOut()} />
         <Text text="Don’t have an account ? Register" link="/Register"></Text>
       </CardBox>
     </CentralizedContainer>
