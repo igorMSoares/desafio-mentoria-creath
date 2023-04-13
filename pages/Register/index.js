@@ -3,7 +3,7 @@ import CardTitle from '@/components/CardTitle';
 import Button from '@/components/Button';
 import CentralizedContainer from '@/components/CentralizedContainer';
 import { auth, onAuthStateChanged } from '@/auth/firebase';
-import { handleSignIn, handleSignUp, handleSignOut } from '@/utils/auth';
+import { handleSignUp } from '@/utils/auth';
 import { useEffect, useState } from 'react';
 import Form from '@/components/Form';
 import Text from '@/components/Text';
@@ -30,7 +30,6 @@ export default function Register() {
     <CentralizedContainer>
       <CardBox>
         <CardTitle title="Create Account" />
-        <Form label="Fullname" required/>
         <Form label="Email adress" typeB="email" required/>
         <InputPassword/>
         <Button
