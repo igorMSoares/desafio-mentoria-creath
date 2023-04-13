@@ -11,9 +11,9 @@ const StyledButton = styled.button`
   font-size: 16px;
 `;
 
-const Button = ({ type, label, clickHandler }) => {
+const Button = ({ type, label, clickHandler, form }) => {
   return (
-    <StyledButton type={type} onClick={clickHandler}>
+    <StyledButton type={type} onClick={clickHandler} form={form ? form : ''}>
       {label}
     </StyledButton>
   );
