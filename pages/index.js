@@ -1,8 +1,21 @@
 import Splash from '@/components/Splash';
-import { auth } from '@/auth/firebase';
+import { auth, onAuthStateChanged } from '@/auth/firebase';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
-  const user = auth.currentUser?.email;
+  const [currentUser, setCurrentUser] = useState(auth.currentUser);
+
+  useEffect(() => {
+    const removeListener = onAuthStateChanged(auth, user => {
+      setCurrentUser(user);
+
+      return () => {
+        removeListener();
+      };
+    });
+  }, []);
+
+  const user = currentUser?.email;
 
   return <Splash user={user ? user : ''} />;
 }
