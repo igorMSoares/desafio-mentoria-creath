@@ -7,11 +7,14 @@ const StyledButton = styled.button`
   background-color: #3867e2;
   border-radius: 0.625rem;
   border: 0;
+  height: 35px;
+  font-size: 16px;
+  cursor: pointer;
 `;
 
-const Button = ({ type, label, clickHandler }) => {
+const Button = ({ type, label, clickHandler, form }) => {
   return (
-    <StyledButton type={type} onClick={clickHandler}>
+    <StyledButton type={type} onClick={clickHandler} form={form ? form : ''}>
       {label}
     </StyledButton>
   );

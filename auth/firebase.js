@@ -39,9 +39,19 @@ const signUp = async (email, password) => {
     const errorMsg =
       errorCode === 'auth/email-already-in-use'
         ? 'E-mail já cadastrado'
+        : errorCode === 'auth/invalid-email'
+        ? 'E-mail Inválido'
+        : errorCode === 'auth/wrong-password'
+        ? 'Senha Incorreta'
+        : errorCode === 'auth/missing-password'
+        ? 'Digite uma senha'
+        : errorCode === 'auth/missing-email'
+        ? 'Digite um email válido'
+        : errorCode === 'auth/weak-password'
+        ? 'Digite uma senha mais forte'
         : 'Ocorreu um erro durante o cadastro';
 
-    return { user: null, errorMsg };
+    return { user: null, errorMsg, errorCode };
   }
 };
 
@@ -64,9 +74,11 @@ const signIn = async (email, password) => {
         ? 'E-mail Inválido'
         : errorCode === 'auth/wrong-password'
         ? 'Senha Incorreta'
+        : errorCode === 'auth/missing-password'
+        ? 'Digite uma senha'
         : 'Ocorreu um erro durante a autenticação';
 
-    return { user: null, errorMsg };
+    return { user: null, errorMsg, errorCode };
   }
 };
 

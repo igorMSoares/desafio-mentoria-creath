@@ -1,0 +1,111 @@
+/*//\\//\\//\\//|| Header ||//\\//\\//\\//*/
+#div_header{
+    width: 100%;
+    height: 46px;
+    padding: 10px;
+    background: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#div_menu{
+    max-width: 1800px;
+    width: 1200px;
+    display: flex;
+    align-items: center;
+    padding-right: 25px;
+    height: 40px;
+    background: #131313;
+    border-radius: 10px;
+    
+}
+#div_logo{
+    height: 41px;
+    background: rgba(56, 103, 226, 0.5);
+    border-radius: 10px;
+    display: flex;
+}
+#p_logo{
+    width: 125px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 37px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFFFFF;
+}
+#div_buttons{
+    display: flex;
+    max-width: 100%;
+    width: 100%;
+    justify-content: flex-end;
+}
+.text_buttons{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 34px;
+    display: flex;
+    text-align: center;
+    color: #FFFFFF;
+}
+#btn_login{
+    box-sizing: border-box;
+    height: 31px;
+    border: none;
+    background-color: #25242400;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#btn_login:hover{
+    background-color: #25242456;
+}
+#btn_login:active{
+    background-color: #3d3d3f69;
+}
+#btn_cadastrar{
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 31px;
+    border-left-style: solid;
+    border-color: #2551C2;
+    background-color: #25242400;
+    cursor: pointer;
+    
+}
+#btn_cadastrar:hover{
+    background-color: #25242456; 
+}
+#btn_cadastrar:active{
+    background-color:  #3d3d3f69;
+}
+
+/*//\\//\\//\\//|| Marca ||//\\//\\//\\//*/
+#div_marca{
+    display: flexbox;
+    padding-top: 5%;
+    
+    width: 100%;
+    height: 90%;
+}
+
+#div_logoIMG{
+    align-items: center;
+    text-align: center;
+}
+
+#tex_marca{    
+    font-style: normal;
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 94px;
+
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
