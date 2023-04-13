@@ -13,11 +13,11 @@ export default function Splash({ user }) {
           </div>
 
           <div id={styles.div_buttons}>
-            <Link id={styles.btn_login} href="/Login/Login">
+            <Link id={styles.btn_login} href="/Login">
               <p className={styles.text_buttons}> Login </p>
             </Link>
 
-            <Link id={styles.btn_cadastrar} href="/Register/Register">
+            <Link id={styles.btn_cadastrar} href="/Register">
               <p className={styles.text_buttons}>Cadastrar-se</p>
             </Link>
           </div>
