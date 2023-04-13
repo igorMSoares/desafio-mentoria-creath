@@ -1,0 +1,118 @@
+/*//\\//\\//\\//|| Header ||//\\//\\//\\//*/
+#div_header{
+    width: 100%;
+    height: 46px;
+    padding-top: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+
+    background: #FFFFFF;
+}
+#div_menu{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 36px;
+
+    background: #131313;
+    border-radius: 10px;
+}
+#div_logo{
+    width: 130px;
+    height: 35px;
+
+    background: rgba(56, 103, 226, 0.5);
+    border-radius: 10px;
+}
+#p_logo{
+    font-family: 'Cairo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 37px;
+    display: flexbox;
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+#div_buttons{
+    display: flex;
+    margin-left: 72%;
+    
+}
+.text_buttons{
+    font-family: 'Cairo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 34px;
+    display: flex;
+    text-align: center;
+
+    color: #FFFFFF;
+}
+#btn_login{
+    box-sizing: border-box;
+    padding-left: 15%;
+
+    width: 116px;
+    height: 31px;
+
+    border: none;
+    background-color: #25242400;
+
+    cursor: pointer;
+}
+#btn_login:hover{
+    background-color: #25242456;
+}
+#btn_login:active{
+    background-color: #3d3d3f69;
+}
+#btn_cadastrar{
+    box-sizing: border-box;
+    padding-left: 9%;
+    margin-left: 3px;
+
+    width: 150px;
+    height: 31px;
+    
+    border: none;
+    background-color: #25242400;
+
+    cursor: pointer;
+}
+#btn_cadastrar:hover{
+    background-color: #25242456; 
+}
+#btn_cadastrar:active{
+    background-color:  #3d3d3f69;
+}
+
+/*//\\//\\//\\//|| Marca ||//\\//\\//\\//*/
+#div_marca{
+    display: flexbox;
+    padding-top: 5%;
+    
+    width: 100%;
+    height: 90%;
+}
+
+#div_logoIMG{
+    align-items: center;
+    text-align: center;
+}
+
+#tex_marca{    
+    font-family: 'Cairo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 70px;
+    line-height: 94px;
+
+    align-items: center;
+    text-align: center;
+
+    color: #FFFFFF;
+}
