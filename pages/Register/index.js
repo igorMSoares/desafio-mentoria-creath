@@ -7,8 +7,6 @@ import { handleSignUp } from '@/utils/auth';
 import { useEffect, useState } from 'react';
 import Form from '@/components/Form';
 import Text from '@/components/Text';
-import InputPassword from '@/components/InputPassword';
-
 
 const userEmail = 'user@someemail.com';
 const userPassword = 'userpasswd';
@@ -30,13 +28,13 @@ export default function Register() {
     <CentralizedContainer>
       <CardBox>
         <CardTitle title="Create Account" />
-        <Form label="Email adress" typeB="email" required/>
-        <InputPassword/>
+        <Form />
         <Button
+          type="submit"
           label="Create Account"
           clickHandler={e => handleSignUp({ userEmail, userPassword })}
         />
-        <Text text="Already have an account?" link="/Login/Login"></Text>
+        <Text text="Already have an account?" link="/Login"></Text>
       </CardBox>
     </CentralizedContainer>
   );

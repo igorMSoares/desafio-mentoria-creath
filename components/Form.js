@@ -1,41 +1,21 @@
-import { useState } from 'react';
 import styled from 'styled-components';
+import InputPassword from '@/components/InputPassword';
+import LabelInput from '@/components/LabelInput';
+import FormInput from '@/components/FormInput';
 
-const StyledForm = styled.div`
-   flex-direction: column;
-   display: flex;
+const StyledForm = styled.form`
+  display: grid;
+  grid-template-columns: 1fr;
 `;
 
-const StyledInput = styled.input`
-    outline:none;    
-    width: 255px;
-    height: 30px;
-    background: #E6E6E6;
-    border-radius: 10px;
-    border-style: none;
-    padding-left:10px;
-    font-style: normal;
-`;
-
-const StyledLabel = styled.label`
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-    color: #000000;
-`;
-
-const LabelInput = ({text}) => <StyledLabel>{text}</StyledLabel>
-const InputForm = ({type}) => <StyledInput type={type}></StyledInput>
-
-
- const Form = ({label, typeB}) => {
-    return(
-        <StyledForm>
-            <LabelInput text={label}/>
-            <InputForm type={typeB} />
-        </StyledForm>
-    );
-}
+const Form = () => {
+  return (
+    <StyledForm>
+      <LabelInput text="E-mail" labelFor="user-email_input" />
+      <FormInput type="text" id="user-email_input" required />
+      <InputPassword />
+    </StyledForm>
+  );
+};
 
 export default Form;

@@ -1,86 +1,50 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import {GrView } from 'react-icons/gr';
-import {BiHide} from 'react-icons/bi'
+import { GrView } from 'react-icons/gr';
+import { BiHide } from 'react-icons/bi';
+import LabelInput from '@/components/LabelInput';
+import FormInput from '@/components/FormInput';
 
-const StyledInput = styled.input`
-    width: 220px;
-    height: 30px;
-    background: #E6E6E6;
-    border-radius: 10px;
-    border-style: none;
-    padding-left:10px;
-    font-style: normal;
-    outline:none;
-`;
-const StyledLabel = styled.label`
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-    color: #000000;
-`;
-
-const StyledForm = styled.div`
-   flex-direction: column;
-   display: flex;
-`;
 const Styledtoggle = styled.span`
-    width: 25px;
-    background: #E6E6E6;
-    border-style:none;
-    display:flex;
-    justify-content:flex-end;
-    cursor: pointer;
+  width: 1.5rem;
+  cursor: pointer;
 `;
+
 const StyledContainer = styled.div`
-    width:255;
-    display:flex;
-    align-items: center;
-    background: #E6E6E6;
-    border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #e6e6e6;
+  border-radius: 10px;
 `;
 
-export default function InputPassword(){
-    const [passwordShow, setShow] = useState(false)
+export default function InputPassword() {
+  const [passwordShow, setShow] = useState(false);
 
-
-    const togglePassword = () =>{
-        setShow(!passwordShow);
+  const togglePassword = () => {
+    setShow(!passwordShow);
+  };
+  const Icon = () => {
+    if (!passwordShow) {
+      return <GrView size={17} />;
+    } else {
+      return <BiHide size={17} />;
     }
-    const Icon = ()=>{
-        if(!passwordShow){
-            return(
-                <Styledtoggle onClick={togglePassword}>
-                    <GrView size={17}/>
-                </Styledtoggle>
-            );
-        }
-        else{
-            return(
-            <Styledtoggle onClick={togglePassword}>
-                <BiHide size={17}/>
-            </Styledtoggle>
-            );
-        }
-    }
-    ;
+  };
 
-    const LabelInput = ({text}) => <StyledLabel>{text}</StyledLabel>;
-    const InputPassword = StyledInput;
-
-    
-
-
-    return(
-        <StyledForm>
-            <LabelInput text="Password"/>
-            <StyledContainer>
-                <InputPassword type={passwordShow? "text" : "password"}/>
-                <Styledtoggle>
-                    <Icon/>
-                </Styledtoggle>
-            </StyledContainer>
-        </StyledForm>
-    );
+  return (
+    <>
+      <LabelInput text="Password" labelFor={'user-passwd_input'} />
+      <StyledContainer>
+        <FormInput
+          id="user-passwd_input"
+          type={passwordShow ? 'text' : 'password'}
+          required
+        />
+        <Styledtoggle onClick={togglePassword}>
+          <Icon />
+        </Styledtoggle>
+      </StyledContainer>
+    </>
+  );
 }
