@@ -5,11 +5,11 @@ import CentralizedContainer from '@/components/CentralizedContainer';
 import { auth, onAuthStateChanged } from '@/auth/firebase';
 import { handleSignIn, handleSignOut } from '@/utils/auth';
 import { useEffect, useState } from 'react';
-import InputPassword from '@/components/InputPassword';
 import Form from '@/components/Form';
 import Text from '@/components/Text';
 import { clearUserInputValues, getUserInputValues } from '@/utils/userInputs';
 import { useRouter } from 'next/router';
+import { signOut } from '@firebase/auth';
 
 export default function Login() {
   const [currentUser, setCurrentUser] = useState(auth.currentUser);
@@ -48,6 +48,11 @@ export default function Login() {
     }
   };
 
+  const handleLogOut = async () => {
+    await handleSignOut();
+    router.push({ pathname: '/' });
+  };
+
   useEffect(() => {
     const removeListener = onAuthStateChanged(auth, user => {
       setCurrentUser(user);
@@ -57,6 +62,19 @@ export default function Login() {
       };
     });
   }, []);
+
+  if (currentUser) {
+    return (
+      <CentralizedContainer>
+        <CardBox>
+          <p>
+            Você já está logado como <b>{currentUser.email}</b>
+          </p>
+          <Button label="Log Out" clickHandler={handleLogOut} />
+        </CardBox>
+      </CentralizedContainer>
+    );
+  }
 
   return (
     <CentralizedContainer>
