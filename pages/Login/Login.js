@@ -37,7 +37,7 @@ export default function Login() {
           clickHandler={e => handleSignIn({ userEmail, userPassword })}
         />
         <Button label="Sign Out" clickHandler={e => handleSignOut()} />
-        <Text text="Don’t have an account ? Register"></Text>
+        <Text text="Don’t have an account ? Register" link="/Register/Register"></Text>
       </CardBox>
     </CentralizedContainer>
   );

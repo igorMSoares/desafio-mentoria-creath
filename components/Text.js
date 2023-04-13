@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from 'styled-components';
 
 
@@ -12,6 +13,11 @@ const StyledText = styled.p`
     cursor: pointer;
 `;
 
-const Text = ({text, click}) => <StyledText onClick={click}>{text}</StyledText>
+const Text = ({text, click, link}) => {
+    return(
+    <StyledText onClick={click}>
+        <Link href={link}>{text}</Link>
+    </StyledText>
+)}
 
 export default Text;

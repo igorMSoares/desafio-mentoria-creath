@@ -1,15 +1,10 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-
-
-
-
 const StyledForm = styled.div`
    flex-direction: column;
    display: flex;
 `;
-
 
 const StyledInput = styled.input`
     outline:none;    
@@ -32,13 +27,13 @@ const StyledLabel = styled.label`
 
 const LabelInput = ({text}) => <StyledLabel>{text}</StyledLabel>
 const InputForm = ({type}) => <StyledInput type={type}></StyledInput>
-const ButtonView = ()=> <StyledButtonView onClick={togglePassword}></StyledButtonView>
+
 
  const Form = ({label, typeB}) => {
     return(
         <StyledForm>
             <LabelInput text={label}/>
-            <InputForm type={typeB}/>
+            <InputForm type={typeB} />
         </StyledForm>
     );
 }

@@ -5,6 +5,7 @@ import CentralizedContainer from '@/components/CentralizedContainer';
 import Form from '@/components/Form';
 import Text from '@/components/Text';
 
+
 export default function Splash() {
 
   return (

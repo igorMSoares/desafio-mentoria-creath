@@ -9,6 +9,7 @@ import Form from '@/components/Form';
 import Text from '@/components/Text';
 import InputPassword from '@/components/InputPassword';
 
+
 const userEmail = 'user@someemail.com';
 const userPassword = 'userpasswd';
 
@@ -29,15 +30,14 @@ export default function Register() {
     <CentralizedContainer>
       <CardBox>
         <CardTitle title="Create Account" />
-
         <Form label="Fullname" required/>
-        <Form label="Email adress" required/>
+        <Form label="Email adress" typeB="email" required/>
         <InputPassword/>
         <Button
           label="Create Account"
           clickHandler={e => handleSignUp({ userEmail, userPassword })}
         />
-        <Text text="Already have an account? Log in"></Text>
+        <Text text="Already have an account?" link="/Login/Login"></Text>
       </CardBox>
     </CentralizedContainer>
   );
