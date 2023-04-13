@@ -1,6 +1,6 @@
 import styles from '@/styles/splash.module.css';
 import Image from 'next/image';
-import img from '../../assets/img/killuaHXH.png'
+import img from '@/assets/img/killuaHXH.png'
 import Link from 'next/link';
 
 export default function Splash() {
@@ -28,7 +28,7 @@ export default function Splash() {
 
             <div id={styles.div_marca}>
                 <div id={styles.div_logoIMG}>
-                   <Image src={img} width='300' height='300'/> 
+                   <Image src={img} width='300' height='300'alt="Logo da empresa" priority/> 
                 </div>
                 <p id={styles.tex_marca}>Sua Marca</p>
             </div>
