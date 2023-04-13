@@ -42,7 +42,7 @@ export default function Login() {
     if (user) {
       setErrorMsg('');
       setInputError(false);
-      router.push({ pathname: '/', query: { user: user.email ?? '' } });
+      router.push({ pathname: '/' });
     } else if (errorMsg) {
       handleErrorMsg({ errorMsg, form, errorCode });
     }
