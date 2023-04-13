@@ -8,33 +8,7 @@ import { useEffect, useState } from 'react';
 import Form from '@/components/Form';
 import Text from '@/components/Text';
 import { useRouter } from 'next/router';
-
-const getUserInputElements = form => {
-  const emailInput = form.children['user-email_input'];
-
-  const getUserPasswdInput = () => {
-    return form.children['user-passwd_input--wrapper'].children[
-      'user-passwd_input--container'
-    ].children['user-passwd_input'];
-  };
-
-  const passwdInput = getUserPasswdInput();
-
-  return { emailInput, passwdInput };
-};
-
-const getUserInputValues = form => {
-  const { emailInput, passwdInput } = getUserInputElements(form);
-
-  return { email: emailInput.value, passwd: passwdInput.value };
-};
-
-const clearUserInputValues = form => {
-  const { emailInput, passwdInput } = getUserInputElements(form);
-
-  emailInput.value = '';
-  passwdInput.value = '';
-};
+import { clearUserInputValues, getUserInputValues } from '@/utils/userInputs';
 
 export default function Register() {
   const [currentUser, setCurrentUser] = useState(auth.currentUser);
@@ -45,7 +19,7 @@ export default function Register() {
   const handleErrorMsg = ({ errorMsg, form, errorCode }) => {
     setErrorMsg(errorMsg);
     setInputError(true);
-    console.log('=>', errorCode);
+
     if (
       ![
         'auth/missing-email',
@@ -63,6 +37,7 @@ export default function Register() {
       userEmail,
       userPassword,
     });
+
     if (user) {
       setErrorMsg('');
       setInputError(false);

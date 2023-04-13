@@ -74,9 +74,11 @@ const signIn = async (email, password) => {
         ? 'E-mail Inválido'
         : errorCode === 'auth/wrong-password'
         ? 'Senha Incorreta'
+        : errorCode === 'auth/missing-password'
+        ? 'Digite uma senha'
         : 'Ocorreu um erro durante a autenticação';
 
-    return { user: null, errorMsg };
+    return { user: null, errorMsg, errorCode };
   }
 };
 

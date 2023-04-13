@@ -10,9 +10,11 @@ const handleSignUp = async ({ userEmail, userPassword }) => {
 };
 
 const handleSignIn = async ({ userEmail, userPassword }) => {
-  const { user, errorMsg } = await signIn(userEmail, userPassword);
+  const { user, errorMsg, errorCode } = await signIn(userEmail, userPassword);
   if (user) {
   } else if (errorMsg) console.log(errorMsg);
+
+  return { user, errorMsg, errorCode };
 };
 
 const handleSignOut = async () => {
