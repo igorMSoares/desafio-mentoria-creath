@@ -18,7 +18,7 @@ const StyledContainer = styled.div`
   border-radius: 10px;
 `;
 
-export default function InputPassword() {
+export default function InputPassword({ error }) {
   const [passwordShow, setShow] = useState(false);
 
   const togglePassword = () => {
@@ -34,7 +34,11 @@ export default function InputPassword() {
 
   return (
     <div id="user-passwd_input--wrapper">
-      <LabelInput text="Password" labelFor={'user-passwd_input'} />
+      <LabelInput
+        text="Password"
+        labelFor={'user-passwd_input'}
+        error={error ?? false}
+      />
       <StyledContainer id="user-passwd_input--container">
         <FormInput
           id="user-passwd_input"

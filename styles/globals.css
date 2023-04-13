@@ -13,3 +13,10 @@ body {
   font-family: 'Inter', sans-serif;
   background-color: #3867e2;
 }
+
+.error-message {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgb(173, 59, 59);
+  text-align: center;
+}

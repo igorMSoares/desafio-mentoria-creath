@@ -8,7 +8,7 @@ const StyledForm = styled.form`
   grid-template-columns: 1fr;
 `;
 
-const Form = ({ id, submitHandler }) => {
+const Form = ({ id, submitHandler, error }) => {
   return (
     <StyledForm
       id={id}
@@ -19,9 +19,13 @@ const Form = ({ id, submitHandler }) => {
         return false;
       }}
     >
-      <LabelInput text="E-mail" labelFor="user-email_input" />
+      <LabelInput
+        text="E-mail"
+        labelFor="user-email_input"
+        error={error ?? false}
+      />
       <FormInput type="text" id="user-email_input" required />
-      <InputPassword />
+      <InputPassword error={error ?? false} />
     </StyledForm>
   );
 };

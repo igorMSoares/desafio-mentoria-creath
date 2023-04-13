@@ -7,9 +7,10 @@ import { handleSignUp } from '@/utils/auth';
 import { useEffect, useState } from 'react';
 import Form from '@/components/Form';
 import Text from '@/components/Text';
+import { useRouter } from 'next/router';
 
-const getUserInputValues = form => {
-  const email = form.children['user-email_input'].value;
+const getUserInputElements = form => {
+  const emailInput = form.children['user-email_input'];
 
   const getUserPasswdInput = () => {
     return form.children['user-passwd_input--wrapper'].children[
@@ -17,21 +18,59 @@ const getUserInputValues = form => {
     ].children['user-passwd_input'];
   };
 
-  const passwd = getUserPasswdInput().value;
+  const passwdInput = getUserPasswdInput();
 
-  return { email, passwd };
+  return { emailInput, passwdInput };
 };
 
-const handleFormSubmit = form => {
-  const { email: userEmail, passwd: userPassword } = getUserInputValues(form);
+const getUserInputValues = form => {
+  const { emailInput, passwdInput } = getUserInputElements(form);
 
-  //TODO: Validate email and passwd
+  return { email: emailInput.value, passwd: passwdInput.value };
+};
 
-  handleSignUp({ userEmail, userPassword });
+const clearUserInputValues = form => {
+  const { emailInput, passwdInput } = getUserInputElements(form);
+
+  emailInput.value = '';
+  passwdInput.value = '';
 };
 
 export default function Register() {
   const [currentUser, setCurrentUser] = useState(auth.currentUser);
+  const [errorMsg, setErrorMsg] = useState('');
+  const [inputError, setInputError] = useState(false);
+  const router = useRouter();
+
+  const handleErrorMsg = ({ errorMsg, form, errorCode }) => {
+    setErrorMsg(errorMsg);
+    setInputError(true);
+    console.log('=>', errorCode);
+    if (
+      ![
+        'auth/missing-email',
+        'auth/missing-password',
+        'auth/weak-password',
+      ].includes(errorCode)
+    )
+      clearUserInputValues(form);
+  };
+
+  const handleFormSubmit = async form => {
+    const { email: userEmail, passwd: userPassword } = getUserInputValues(form);
+
+    const { user, errorMsg, errorCode } = await handleSignUp({
+      userEmail,
+      userPassword,
+    });
+    if (user) {
+      setErrorMsg('');
+      setInputError(false);
+      router.push({ pathname: '/', query: { user: user.email ?? '' } });
+    } else if (errorMsg) {
+      handleErrorMsg({ errorMsg, form, errorCode });
+    }
+  };
 
   useEffect(() => {
     const removeListener = onAuthStateChanged(auth, user => {
@@ -47,9 +86,11 @@ export default function Register() {
     <CentralizedContainer>
       <CardBox>
         <CardTitle title="Create Account" />
+        <p className="error-message">{errorMsg}</p>
         <Form
           id="register-user_form"
           submitHandler={e => handleFormSubmit(e.target)}
+          error={inputError}
         />
         <Button
           type="submit"
