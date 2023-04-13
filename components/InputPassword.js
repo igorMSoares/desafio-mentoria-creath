@@ -26,9 +26,9 @@ export default function InputPassword() {
   };
   const Icon = () => {
     if (!passwordShow) {
-      return <GrView size={17} />;
+      return <BiHide  size={17} />;
     } else {
-      return <BiHide size={17} />;
+      return <GrView size={17} />;
     }
   };
 
